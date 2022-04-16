@@ -10,6 +10,8 @@
 
 package br.com.giovannimoratto.codelibraryapi.author;
 
+import br.com.giovannimoratto.codelibraryapi.core.validation.annotations.UniqueValue;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -18,9 +20,11 @@ public class AuthorRequest {
 
     /* Properties */
     @NotBlank
+    @UniqueValue(fieldName = "name", domainClass = Author.class)
     private final String name;
     @NotBlank
     @Email
+    @UniqueValue(fieldName = "email", domainClass = Author.class)
     private final String email;
     @NotBlank
     @Size(max = 400)
